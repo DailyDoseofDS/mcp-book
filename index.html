@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Dose of Data Science - MCP Guidebook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .guidebook-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .guidebook-image {
+            max-width: 100%;
+            height: auto;
+            max-width: 1000px;
+            width: 100%;
+            border-radius: 8px;
+            /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
+            /* transform: rotate(-2deg); */
+            transition: transform 0.3s ease;
+        }
+
+        .guidebook-image:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .headline {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+        }
+
+        .form-section {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .formkit-form {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (min-width: 768px) {
+            .form-section {
+                max-width: 700px;
+            }
+            
+            .formkit-form {
+                padding: 50px;
+            }
+        }
+
+        .formkit-fields {
+            display: flex !important;
+            gap: 10px;
+            flex-wrap: nowrap !important;
+            align-items: stretch;
+            flex-direction: row !important;
+        }
+
+        .formkit-field {
+            flex: 3 !important;
+            min-width: 250px;
+            margin-bottom: 0 !important;
+        }
+
+        .formkit-submit {
+            flex: 2 !important;
+            min-width: 220px;
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+        }
+
+        .formkit-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .formkit-input:focus {
+            outline: none;
+            border-color: #1677be;
+        }
+
+        .formkit-submit {
+            background: #1677be;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            min-width: 220px;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .formkit-submit:hover {
+            background: #0f5a8a;
+        }
+
+        /* Override ConvertKit styles for inline layout */
+        .formkit-form[data-uid="3cf9749d3d"] .formkit-fields {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+        }
+
+        .formkit-form[data-uid="3cf9749d3d"] .formkit-field,
+        .formkit-form[data-uid="3cf9749d3d"] .formkit-submit {
+            margin: 0 !important;
+            flex: 1 1 auto !important;
+        }
+
+        .formkit-form[data-uid="3cf9749d3d"] .formkit-field {
+            flex: 3 1 auto !important;
+        }
+
+        .formkit-form[data-uid="3cf9749d3d"] .formkit-submit {
+            flex: 2 1 auto !important;
+            white-space: nowrap !important;
+        }
+
+        .privacy-text {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .headline {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .guidebook-image {
+                max-width: 300px;
+            }
+
+            .formkit-fields {
+                flex-direction: column !important;
+            }
+
+            .formkit-field,
+            .formkit-submit {
+                min-width: 100% !important;
+                flex: none !important;
+            }
+
+            .formkit-form[data-uid="3cf9749d3d"] .formkit-fields {
+                flex-direction: column !important;
+            }
+
+            .formkit-form[data-uid="3cf9749d3d"] .formkit-field,
+            .formkit-form[data-uid="3cf9749d3d"] .formkit-submit {
+                flex: none !important;
+                margin-bottom: 15px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .guidebook-image {
+                max-width: 250px;
+            }
+
+            .formkit-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="guidebook-container">
+                <img src="mcp-guidebook.png" alt="MCP The Illustrated Guidebook" class="guidebook-image">
+            </div>
+            
+            <h1 class="headline">Daily Dose of Data Science</h1>
+            
+            <p class="subtitle">
+                Daily no-fluff issues that help you succeed and stay relevant in AI roles. 
+                Join 150,000+ AI professionals and get a free MCP guidebook (75+ pages) with 10+ real-world MCP projects.
+            </p>
+        </div>
+
+        <div class="form-section">
+            <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+            <form action="https://app.kit.com/forms/8538428/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8538428" data-uid="3cf9749d3d" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:false,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800">
+                <div data-style="clean">
+                    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                    <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+                        <div class="formkit-field">
+                            <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Your email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;">
+                        </div>
+                        <button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;">
+                            <div class="formkit-spinner">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <span class="">Join for free and get the PDF!</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <p class="privacy-text">We respect your privacy. Unsubscribe at any time.</p>
+            <p class="copyright">Daily Dose of Data Science © 2025 All rights reserved</p>
+        </div>
+    </div>
+</body>
+</html>
